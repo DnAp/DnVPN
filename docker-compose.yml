@@ -1,0 +1,18 @@
+version: "3.6"
+
+services:
+    vpn:
+        build:
+            context: ./
+            dockerfile: Dockerfile
+        volumes:
+            - ./vpn/vpn.conf:/etc/openvpn/vpn.conf
+        ports:
+            - "500:500/udp"
+            - "4500:4500/udp"
+        env_file:
+            - .env
+        environment:
+            - "VPN_DNS_SRV1=127.0.0.1"
+            - "VPN_DNS_SRV2=1.1.1.1"
+        privileged: true

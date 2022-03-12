@@ -1,0 +1,5 @@
+.:53 {
+    rewrite name regex (.*)\.i2p {1}.fuf.me
+    forward . 8.8.8.8:53
+    cache 30
+}
